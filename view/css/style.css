@@ -2,9 +2,13 @@ header>h1 {
     background-color: #FCBA04;
     font-size: 500%;
 }
-
-nav ul {
+nav.navbar {
     background-color: #A50104;
-    font-size: 250%;
-    
 }
+ul.navbar-nav li {
+    background-color: #A50104;
+    width: 36px;
+    height: 36px;
+    margin: 0 10px;
+}
+
