@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>CardMania | Profile</title>
@@ -8,26 +9,52 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="../../view/css/style.css">
 </head>
+
 <body>
     <header class="text-center">
         <h1>CardMania</h1>
     </header>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 mx-auto">
-                <!-- Your content goes here -->
-                <h1>Central Column</h1>
-                <p>This column has a width of 25% and is red.</p>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <img src="../res/Pfp.jfif" class="img-fluid rounded-circle mx-auto d-block">
+                    <button class="btn btn-primary float-end">Follow</button>
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-secondary float-end">Settings</button>
+                </div>
+            </div>
+            <div class="row mx-auto">
+                <div class="col text-center">
+                    <h2>Username</h2>
+                </div>
+            </div>
+            <div class="row mx-auto">
+                <div class="col"></div>
+                <div class="col text-center">
+                    <p>Post</p>
+                    <p>0</p>
+                </div>
+                <div class="col text-center">
+                    <p>Following</p>
+                    <p>0</p>
+                </div>
+                <div class="col text-center">
+                    <p>Followers</p>
+                    <p>0</p>
+                </div>
+                <div class="col"></div>
             </div>
         </div>
     </div>
-    <!-- DA FARE DINAMICA SU OGNI POST TRAMITE JS
-    <aside class="btn-group-vertical float-sm-end">
-        <button class="btn">Like</button>
-        <button class="btn">Comment</button>
-        <button class="btn">Share</button>
-    </aside>
-    -->
+
+    <!-- Aggiungo sezione dei post dell'utente -->
+    <div class="row mx-auto">
+        <!-- DA FARE DINAMICA SUL PROFILO CON JS -->
+    </div>
+
     <nav class="navbar navbar-expand-sm justify-content-center fixed-bottom">
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -40,7 +67,8 @@
                 <a href="../user/upload.html" class="text-white"><img src="../res/add.png" class="img-fluid"></a>
             </li>
             <li class="nav-item">
-                <a href="../user/notifications.html" class="text-white"><img src="../res/bell.png" class="img-fluid"></a>
+                <a href="../user/notifications.html" class="text-white"><img src="../res/bell.png"
+                        class="img-fluid"></a>
             </li>
             <li class="nav-item">
                 <a href="../user/profile.html" class="text-white"><img src="../res/user.png" class="img-fluid"></a>
@@ -48,4 +76,5 @@
         </ul>
     </nav>
 </body>
+
 </html>
