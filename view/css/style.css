@@ -1,20 +1,18 @@
 header>h1 {
-    background-color: #FCBA04;
+    background-color: black;
 }
 nav.navbar {
     background-color: #A50104;
 }
 ul.nav li {
     background-color: #A50104;
-    width: 36px;
-    height: 36px;
-    margin: 0 15px;
 }
 
 /*-------------------------*/
+/*      Media Queries      */
 
-@media (max-width: 576px) {
+@media (min-width: 576px) {
     header>h1 {
-        background-color: black;
+        background-color: #FCBA04;
     }
 }
