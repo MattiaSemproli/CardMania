@@ -17,48 +17,73 @@
     <script src="../../controller/utility/icon.js"></script>
 </head>
 <body>
-    <header class="text-center">
-        <h1>CardMania</h1>
-    </header>
-    <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-4"></div>
-                <div class="col-4">
-                    <img src="../res/Pfp.jfif" class="img-fluid rounded-circle mx-auto d-block">
-                    <button class="btn btn-primary float-end">Follow</button>
-                </div>
-                <div class="col-4">
-                    <button class="btn btn-secondary float-end">Settings</button>
-                </div>
+    <div class="container-fluid">
+        <div class="row min-vh-100 min-vw-100">
+            <div class="sidebar col-2 d-none p-0 m-0">
+                <nav class="navbar w-100 p-0">
+                    <ul class="navbar-nav ms-2 align-self-start">
+                        <div class="navbar-brand fs-1">CardMania</div>
+                        <li class="nav-item">
+                            <a href="../feed/index.html"><i class="bi bi-houses-fill fs-1 text-black"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../feed/search.html"><i class="bi bi-search fs-1 text-black"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../user/upload.html"><i class="bi bi-patch-plus-fill fs-1 text-black"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../user/notifications.html"><i class="bi bi-bell-fill fs-1 text-black"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../user/profile.html"><i class="bi bi-person-circle fs-1 text-black"></i></a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-            <div class="row mx-auto">
-                <div class="col text-center">
-                    <h2>Username</h2>
+            <div class="container col p-0">
+                <header class="title text-center">
+                    <h1>CardMania</h1>
+                </header>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4"></div>
+                            <div class="col-4">
+                                <img src="../res/Pfp.jfif" class="img-fluid rounded-circle mx-auto d-block">
+                                <button class="btn btn-primary float-end">Follow</button>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn btn-secondary float-end">Settings</button>
+                            </div>
+                        </div>
+                        <div class="row mx-auto">
+                            <div class="col text-center">
+                                <h2>Username</h2>
+                            </div>
+                        </div>
+                        <div class="row mx-auto">
+                            <div class="col"></div>
+                            <div class="col text-center">
+                                <p>Post</p>
+                                <p>0</p>
+                            </div>
+                            <div class="col text-center">
+                                <p>Following</p>
+                                <p>0</p>
+                            </div>
+                            <div class="col text-center">
+                                <p>Followers</p>
+                                <p>0</p>
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="row mx-auto">
-                <div class="col"></div>
-                <div class="col text-center">
-                    <p>Post</p>
-                    <p>0</p>
-                </div>
-                <div class="col text-center">
-                    <p>Following</p>
-                    <p>0</p>
-                </div>
-                <div class="col text-center">
-                    <p>Followers</p>
-                    <p>0</p>
-                </div>
-                <div class="col"></div>
             </div>
         </div>
     </div>
-    <!-- Aggiungo sezione dei post dell'utente -->
-    <div class="row mx-auto">
-        <!-- DA FARE DINAMICA SUL PROFILO CON JS -->
-    </div>
+    <div class="nav-to-load"></div>
     <script src="../../controller/check/isLogged.js"></script>
 </body>
 </html>

@@ -8,11 +8,24 @@ ul.nav li {
     background-color: #A50104;
 }
 
+::-webkit-scrollbar {
+    width: 0;
+}
+
 /*-------------------------*/
 /*      Media Queries      */
 
 @media (min-width: 576px) {
     header>h1 {
         background-color: #FCBA04;
+    }
+    .sidebar {
+        display: flex !important;
+    }
+    .nav-to-load {
+        display: none !important; 
+    }
+    .title {
+        display: none !important;
     }
 }
