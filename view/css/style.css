@@ -1,14 +1,20 @@
 header>h1 {
     background-color: #FCBA04;
-    font-size: 500%;
 }
 nav.navbar {
     background-color: #A50104;
 }
-ul.navbar-nav li {
+ul.nav li {
     background-color: #A50104;
     width: 36px;
     height: 36px;
-    margin: 0 10px;
+    margin: 0 15px;
 }
 
+/*-------------------------*/
+
+@media (max-width: 576px) {
+    header>h1 {
+        background-color: black;
+    }
+}
