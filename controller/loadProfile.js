@@ -48,16 +48,20 @@ window.addEventListener('load', function() {
     } else {
         user = sessionStorage.getItem("username");
     }
-    /* Funzione ajax 1 -> Richiesta username e bio da getUserData.php */
+    /* Funzione ajax 1 -> Richiesta username e bio e pfp da getUserData.php */
+    /* getUserData */
 
     /* Funzione ajax 2 -> Richiesta post da getUserPosts.php */
     /* Con questa richiesta avremo sia tutti i post sia il numero */
+    /* getUserPosts */
 
     /* Funzione ajax 3 -> Richiesta follower da getUserFollowers.php */
     /* Con questa richiesta avremo sia tutti i follower sia il numero */
+    /* getUserFollowers */
 
     /* Funzione ajax 4 -> Richiesta following da getUserFollowing.php */
     /* Con questa richiesta avremo sia tutti i following sia il numero */
+    /* getUserFollowing */
 
     /* Check se mettere edit profile, follow o unfollow */
 
