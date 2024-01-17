@@ -18,8 +18,8 @@ password.addEventListener('input', () => checkEmptyFields());
 $("#login").on("click", function () {
     const checkBox = $("#remember-me").is(":checked");
     $.ajax({
-        url: "../../model/auth/login/login.php",
         type: "POST",
+        url: "../../model/auth/login/login.php",
         data: {
             username: $("#username").val().toLowerCase(),
             password: $("#password").val(),

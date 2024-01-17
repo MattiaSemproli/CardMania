@@ -28,7 +28,7 @@ confirmPssw.addEventListener('input', function () {
 $("#registration").on("click", function () {
     registerUser(document.getElementById('username').value,
                  document.getElementById('email').value, 
-                 document.getElementById('nome').value,
+                 document.getElementById('name').value,
                  pssw.value);
 });
 
@@ -36,12 +36,12 @@ function registerUser(username, email, name, password) {
     $.ajax({
         type: 'POST',
         url: '../../model/auth/register/registration.php', 
-        data: new FormData([['username', username],
-                            ['email', email],
-                            ['name', name],
-                            ['password', password]]),
-        contentType: false,
-        processData: false,
+        data: {
+            username: username,
+            email: email,
+            name: name,
+            password: password,
+        },
         success: function(response) {
             if(response) {
                 window.location.href = "../../view/auth/login.html";
