@@ -1,7 +1,6 @@
 <?php
 
 function executeLogin($username, $password, $connection) {
-    
     $resUsername = "";
     $resPassword = "";
     $resSalt = "";

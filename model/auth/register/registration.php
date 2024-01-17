@@ -16,13 +16,12 @@ if ($stmt = $conn->prepare($sql)) {
     $bio = NULL;
     $stmt->bind_param("sssbsss", $_POST["username"], $_POST["email"], $_POST["name"], $pfp, $bio, $hashedPassword, $rndSalt);
     if ($stmt->execute()) {
-        $response = array("success" => true, "message" => "User registered successfully");
-        echo json_encode($response);
-        executeLogin($_POST["username"], $password, $conn);
+        return true;
     } else {
-        $response = array("success" => false, "message" => "Error registering user");
-        echo json_encode($response);
+        return false;
     }
+} else {
+    return false;
 }
 
 $conn->close();

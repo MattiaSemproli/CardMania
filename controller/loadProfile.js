@@ -46,7 +46,7 @@ window.addEventListener('load', function() {
     if (searchParams.has("username")) {
         user = searchParams.get("username");
     } else {
-        user = sessionStorage.getItem("loggedUser");
+        user = sessionStorage.getItem("username");
     }
     /* Funzione ajax 1 -> Richiesta username e bio da getUserData.php */
 
