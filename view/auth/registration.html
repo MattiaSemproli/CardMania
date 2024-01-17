@@ -12,12 +12,14 @@
 
 <body class="overflow-hidden">
     <div class="container d-flex justify-content-center align-items-center vh-100">
-        <form class="p-5 rounded shadow-lg"
-            style="background: radial-gradient(farthest-side at 130% -30%, #2274A5, #F45B69);">
+        <form action="../../model/auth/register/registration.php" class="p-5 rounded shadow-lg" style="background: radial-gradient(farthest-side at 130% -30%, #2274A5, #F45B69);">
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="Insert username"
-                    required>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Insert username" required>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Nickname</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Insert nickname" required>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
@@ -25,13 +27,11 @@
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password"
-                    required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
             </div>
             <div class="mb-3">
                 <label for="repassword" class="form-label">Password</label>
-                <input type="password" class="form-control" id="repassword" name="repassword"
-                    placeholder="Confirm password" required>
+                <input type="password" class="form-control" id="repassword" name="repassword" placeholder="Confirm password" required>
             </div>
             <button type="submit" class="btn text-white" style="background-color: #2274A5;">Register</button>
         </form>
