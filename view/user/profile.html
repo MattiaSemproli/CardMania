@@ -1,89 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
-    <title>CardMania | Profile</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- Page title -->
+    <title>CardMania | Profile</title>
     <!-- Bootstrap links -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Bootstrap icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- My css -->
     <link rel="stylesheet" href="../../view/css/style.css">
-    <!-- Jquery funcs -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <!-- My js -->
     <script src="../../controller/utility/icon.js"></script>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row min-vh-100 min-vw-100">
-            <div class="sidebar col-2 d-none p-0 m-0">
-                <nav class="navbar w-100 p-0">
-                    <ul class="navbar-nav ms-2 align-self-start">
-                        <div class="navbar-brand fs-1">CardMania</div>
-                        <li class="nav-item">
-                            <a href="../feed/index.html"><i class="bi bi-houses-fill fs-1 text-black"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../feed/search.html"><i class="bi bi-search fs-1 text-black"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../user/upload.html"><i class="bi bi-patch-plus-fill fs-1 text-black"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../user/notifications.html"><i class="bi bi-bell-fill fs-1 text-black"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../user/profile.html"><i class="bi bi-person-circle fs-1 text-black"></i></a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="container col p-0">
-                <header class="title text-center">
-                    <h1>CardMania</h1>
-                </header>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-4"></div>
-                            <div class="col-4">
-                                <img src="../res/Pfp.jfif" class="img-fluid rounded-circle mx-auto d-block">
-                                <button class="btn btn-primary float-end">Follow</button>
-                            </div>
-                            <div class="col-4">
-                                <button class="btn btn-secondary float-end">Settings</button>
-                            </div>
-                        </div>
-                        <div class="row mx-auto">
-                            <div class="col text-center">
-                                <h2>Username</h2>
-                            </div>
-                        </div>
-                        <div class="row mx-auto">
-                            <div class="col"></div>
-                            <div class="col text-center">
-                                <p>Post</p>
-                                <p>0</p>
-                            </div>
-                            <div class="col text-center">
-                                <p>Following</p>
-                                <p>0</p>
-                            </div>
-                            <div class="col text-center">
-                                <p>Followers</p>
-                                <p>0</p>
-                            </div>
-                            <div class="col"></div>
-                        </div>
+    <!-- Header -->
+    <header class="text-center text-white">
+        <h1 class="py-2">CardMania</h1>
+    </header>
+
+    <!-- Post modal -->
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
+        <!-- Modal dialog -->
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <!-- Modal content -->
+            <div class="modal-content" style="height: 95%;">
+                <!-- Modal header -->
+                <div class="modal-header">
+                    <h1 id="modal-user" class="modal-title fs-5"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Modal post -->
+                <div id="enlarged-post"></div>
+                <!-- Modal comment -->
+                <div class="modal-body">
+                    <div id="modal-display"></div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <div id="input-form" class="input-group d-none">
+                        <button id="like-action" class="btn" type="button">
+                            <span id="like-icon" class="bi bi-heart-fill fs-5"></span>
+                        </button>
+                        <input id="comment-input" type="text" class="form-control" placeholder="Comment...">
+                        <button id="send-comment" class="btn btn-outline-secondary" type="button" disabled>Send</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
+    <!-- Profile box -->
+    <div class="card bg-light mx-2 mx-xl-auto col-xl-4">
+        <div class="card-body">
+            <div class="row gx-0">
+                <div class="col-4 ms-auto">
+                    <img id="main-photo" src="../res/Pfp.jfif" class="mx-auto d-block img-fluid rounded-circle">
+                </div>
+                <div class="col-4">
+                    <button id="user-action" class="float-end"></button>
+                </div>
+            </div>
+            <div class="row gx-0 py-2">
+                <div id="user-name" class="col-6 mx-auto text-center"></div>
+            </div>
+            <div class="row gx-0">
+                <div id="user-bio" class="col-10 mx-auto text-center"></div>
+            </div>
+            <div class="row gx-0 mt-3">
+                <div class="col-4 col-xl-3 ms-xl-auto text-center">
+                    <p id="n-post" class="p-0 m-0">0</p>
+                    <p class="m-0">Post</p>
+                </div>
+                <button id="btn-followers" class="btn p-0 col-4 col-xl-3 text-center">
+                    <p id="n-followers" class="p-0 m-0">0</p>
+                    <p class="m-0">Followers</p>
+                </button>
+                <button id="btn-following" class="btn p-0 col-4 col-xl-3 me-xl-auto text-center">
+                    <p id="n-following" class="p-0 m-0">0</p>
+                    <p class="m-0">Following</p>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post box -->
+    <div class="card bg-light mx-2 mx-xl-auto col-xl-4 mt-1" style="margin-bottom: 5rem;">
+        <div id="post-box" class="row gx-0 row-cols-3">
+        </div>
+    </div>
+
+    <!-- Navbar -->
     <div class="nav-to-load"></div>
+
+    <!-- Controllers -->
     <script src="../../controller/check/isLogged.js"></script>
+    <script src="../../controller/loadProfile.js"></script>
+    <!-- Bootstrap funcs -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Jquery funcs -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </body>
 </html>
