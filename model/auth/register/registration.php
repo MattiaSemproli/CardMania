@@ -16,14 +16,25 @@ if ($stmt = $conn->prepare($sql)) {
     $bio = NULL;
     $stmt->bind_param("sssbsss", $_POST["username"], $_POST["email"], $_POST["name"], $pfp, $bio, $hashedPassword, $rndSalt);
     if ($stmt->execute()) {
-        return true;
+        $response = array(
+            "success" => true,
+            "username" => $_POST['username']
+        );
     } else {
-        return false;
+        $response = array(
+            "success" => false,
+            "error" => $stmt->error
+        );
     }
 } else {
-    return false;
+    $response = array(
+        "success" => false,
+        "error" => $conn->error
+    );
 }
 
 $conn->close();
+
+echo json_encode($response);
 
 ?>

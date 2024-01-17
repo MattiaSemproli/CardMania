@@ -26,7 +26,7 @@ $("#login").on("click", function () {
         },
         success: function (result) {
             const res = JSON.parse(result);
-    if (res.success) {
+            if (res.success) {
                 if (checkBox) {
                     document.cookie = "username=" + res.username + "; expires=" + getCookieExpireDate() + "; path=/";
                 }

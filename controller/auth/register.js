@@ -42,8 +42,9 @@ function registerUser(username, email, name, password) {
             name: name,
             password: password,
         },
-        success: function(response) {
-            if(response) {
+        success: function(res) {
+            const respo = JSON.parse(res);
+            if(respo.success) {
                 window.location.href = "../../view/auth/login.html";
             } else {
                 console.log("Error in the registration process");
