@@ -8,7 +8,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     if (executeLogin($_POST['username'], $_POST['password'], $conn)) {
         $response = array(
             "success" => true,
-            "username" => $_SESSION['username']
+            "username" => $_POST['username']
         );
     } else {
         $response = array(
