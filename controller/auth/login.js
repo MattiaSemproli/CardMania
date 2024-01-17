@@ -21,19 +21,20 @@ $("#login").on("click", function () {
         url: "../../model/auth/login/login.php",
         type: "POST",
         data: {
-            username: $("#username").val(),
+            username: $("#username").val().toLowerCase(),
             password: $("#password").val(),
         },
         success: function (result) {
             const res = JSON.parse(result);
-            if (res.success) {
+    if (res.success) {
                 if (checkBox) {
-                  document.cookie = "username=" + res.username + "; expires=" + getCookieExpireDate() + "; path=/";
+                    document.cookie = "username=" + res.username + "; expires=" + getCookieExpireDate() + "; path=/";
                 }
                 sessionStorage.setItem("username", res.username);
                 toHome();
             } else {
-                $("login").prepend("<p class='error'>" + res.message + "</p>");
+                document.getElementById("error-msg").textContent = res.error;
+                document.getElementById("form").reset();
             }
         },
         error: function (error) {
