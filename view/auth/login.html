@@ -15,7 +15,7 @@
     <!-- My js -->
     <script src="../../controller/utility/icon.js"></script>
 </head>
-<body class="overflow-hidden" style="background: radial-gradient(farthest-side at 130% -30%, #2274A5, #F45B69)">
+<body class="overflow-hidden" style="background: radial-gradient(farthest-side at 130% -30%, #144561, #860914)">
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <form class="p-5 rounded shadow-lg bg-white" autocomplete="off">
             <div class="mb-3">
@@ -24,14 +24,16 @@
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password"
-                    required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
             </div>
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="remember-me">
                 <label class="form-check-label" for="remember-me">Rememeber me</label>
             </div>
-            <button type="button" id="login" class="btn text-white" style="background-color: #F45B69;">Submit</button>
+            <button type="button" id="login" class="btn text-white" disabled style="background-color: #860914;">Login</button>
+            <div>
+                <div class="text-center mt-3">Don't have an account? <a href="registration.html" class="text-decoration-none">Register</a></div>
+            </div>
         </form>
     </div>
 

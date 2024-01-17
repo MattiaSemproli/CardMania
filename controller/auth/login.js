@@ -9,6 +9,12 @@ window.addEventListener("load", function () {
     }
 });
 
+const submitBtn = document.getElementById('login');
+const username = document.getElementById('username');
+const password = document.getElementById('password');
+username.addEventListener('input', () => checkEmptyFields());
+password.addEventListener('input', () => checkEmptyFields());
+
 $("#login").on("click", function () {
     const checkBox = $("#remember-me").is(":checked");
     $.ajax({
@@ -26,6 +32,8 @@ $("#login").on("click", function () {
                 }
                 sessionStorage.setItem("username", res.username);
                 toHome();
+            } else {
+                $("login").prepend("<p class='error'>" + res.message + "</p>");
             }
         },
         error: function (error) {
@@ -53,4 +61,12 @@ function getCookie(name) {
         }
     }
     return null;
+}
+
+function checkEmptyFields() {
+    if (username.value != "" && password.value != "") {
+        submitBtn.disabled = false;
+    } else {
+        submitBtn.disabled = true;
+    }
 }
