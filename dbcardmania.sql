@@ -145,8 +145,8 @@ CREATE TABLE `cm_user` (
 --
 
 CREATE TABLE `login_attempt` (
-  `attempt_user` varchar(30) NOT NULL,
-  `attempt_datetime` datetime NOT NULL
+  `username` varchar(30) NOT NULL,
+  `_time` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
