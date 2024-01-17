@@ -1,7 +1,7 @@
 <?php
 
 /* Require connection to db */
-require_once('/connection/conn.php');
+require_once('connection/conn.php');
 
 /* Get every post from every follower of the targetUser */
 $targetUser = $_POST['username'];
@@ -19,12 +19,11 @@ $sql = "SELECT p.id_post AS n,
                              WHERE f.username = '$targetUser')
         ORDER BY n DESC";
 
-session_start();
 if ($stmt = $conn->prepare($sql)) {
     if ($stmt->execute()) {
         $result = $stmt->get_result();
-        if ($response->num_rows >= 1) {
-            $temp = $response->fetch_all(MYSQLI_ASSOC);
+        if ($result->num_rows >= 1) {
+            $temp = $result->fetch_all(MYSQLI_ASSOC);
             for ($i = 0; $i < count($temp); $i++) {
                 $temp[$i]['photo'] = base64_encode($temp[$i]['photo']);
             }

@@ -1,8 +1,9 @@
 <?php
 
-require_once('/connection/conn.php');
+/* Require connection to db */
+require_once('connection/conn.php');
 
-$targetUser = $_POST['username'];
+/* Get every post of the targetUser */
 
 $sql = "SELECT p.id_post AS n,
                u.name,
@@ -12,11 +13,11 @@ $sql = "SELECT p.id_post AS n,
         FROM cm_post AS p
         INNER JOIN cm_user AS u
         ON p.username = u.username
-        WHERE p.username = '$targetUser'
+        WHERE p.username = ?
         ORDER BY n DESC";
 
-session_start();
 if ($stmt = $conn->prepare($sql)) {
+    $stmt->bind_param("s", $_GET['targetUser']);
     if ($stmt->execute()) {
         $result = $stmt->get_result();
         if ($result->num_rows >= 1) {

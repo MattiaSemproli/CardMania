@@ -3,25 +3,26 @@
 /* Require connection to db */
 require_once('connection/conn.php');
 
-/* Get name, bio and profile picture of the targetUser */
+/* Return if a user follows or not another user */
 
-$sql = "SELECT name,
-               profile_picture AS photo,
-               bio
-        FROM cm_user
-        WHERE username = ?
-        LIMIT 1";
+$sql = "SELECT *
+        FROM cm_follow
+        WHERE username = ? AND follower = ?";
 
 if ($stmt = $conn->prepare($sql)) {
-    $stmt->bind_param("s", $_GET['targetUser']);
+    $stmt->bind_param("ss", $_GET['targetUser'], $_GET['follower']);
     if ($stmt->execute()) {
         $result = $stmt->get_result();
         if ($result->num_rows == 1) {
-            $temp = $result->fetch_all(MYSQLI_ASSOC);
-            $temp[0]['photo'] = base64_encode($temp[0]['photo']);
+            $temp = array(
+                "follows" => true,
+            );
             echo json_encode($temp);
         } else {
-            echo json_encode(array());
+            $temp = array(
+                "follows" => false,
+            );
+            echo json_encode($temp);
         }
     } else {
         echo json_encode(array("error" => $stmt->error));

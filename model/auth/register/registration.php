@@ -13,8 +13,9 @@ session_start();
 
 if ($stmt = $conn->prepare($sql)) {
     $pfp = NULL;
-    $bio = NULL;
+    $bio = "";
     $stmt->bind_param("sssbsss", $_POST["username"], $_POST["email"], $_POST["name"], $pfp, $bio, $hashedPassword, $rndSalt);
+    $stmt->send_long_data(3, file_get_contents('../../../view/res/placeholder.jpg'));
     if ($stmt->execute()) {
         $response = array(
             "success" => true,
