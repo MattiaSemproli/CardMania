@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
             window.location.href = "../../view/auth/login.html";
         }, 500);*/
         $(function() {
-            $(".nav-to-load").load("../../view/common/commonfunc.html .common-navbar");
+            $(".nav-to-load").load("../../view/common/commonNavbar.html .common-navbar");
         });
     } else {
     }
