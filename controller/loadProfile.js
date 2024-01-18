@@ -304,7 +304,24 @@ function actionButtonManagement(user) {
     let loggedUser = sessionStorage.getItem("username");
     if (user == loggedUser) {
         $("#user-action").text("Edit profile").click(function () {
+            $('#edit-modal').modal('show');
+
+            const fileInput = document.getElementById("photo");
+            const uploadImageButton = document.getElementById("upload-image-button");
             
+            uploadImageButton.addEventListener("click", function () {
+                fileInput.click();
+            });
+            
+            fileInput.addEventListener("change", function () {
+                if (fileInput.files && fileInput.files[0]) {    
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        $("#placeholder").attr("src", e.target.result).addClass("img-fluid w-auto h-100");
+                    };
+                    reader.readAsDataURL(fileInput.files[0]);
+                }
+            });
         });
     } else {
         $.ajax({
@@ -508,6 +525,12 @@ myModal.addEventListener('hidden.bs.modal', function() {
 	document.getElementById("comment-input").value = "";
 	$("#input-form").addClass("d-none");
     sessionStorage.removeItem("postID");
+});
+const editModal = document.getElementById('edit-modal');
+editModal.addEventListener('hidden.bs.modal', function() {
+    document.getElementById("nickname").value = "";
+    document.getElementById("bio").value = "";
+    document.getElementById("placeholder").src = "";
 });
 
 /**

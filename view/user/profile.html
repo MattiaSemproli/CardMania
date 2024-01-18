@@ -23,6 +23,51 @@
         <button id="logout" class="btn col text-end text-white p-0 pe-1" type="button">Logout</button>
     </header>
 
+    <!-- Edit profile modal -->
+    <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="edit-modal-label" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <!-- Modal dialog -->
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <!-- Modal content -->
+            <div class="modal-content" style="height: 100%;">
+                <!-- Modal header -->
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Editing profile..</h1>       
+                    <div class="spinner-border ms-auto" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+                <!-- Modal form -->
+                <div class="modal-body">
+                    <form id="edit-profile-form" action="../../model/editProfile.php" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="nickname" class="col-form-label">New nickname:</label>
+                            <input id="nickname" name="nickname" class="form-control" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label for="bio" class="col-form-label">New biography:</label>
+                            <input id="bio" name="bio" class="form-control" type="text">
+                        </div>
+                        <div class="row gx-0 mb-3">
+                            <label for="photo" class="col-4">New profile picture:</label>
+                            <input id="photo" name="photo" class="form-control visually-hidden" type="file" accept="image/*">
+                            <button id="upload-image-button" class="btn p-0 col-4" type="button">
+                                <i class="bi bi-plus fs-2"></i>
+                            </button>
+                        </div>
+                        <div class="mb-3 text-center h">
+                            <img id="placeholder" class="img-fluid" alt="">
+                        </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Post modal -->
     <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
         <!-- Modal dialog -->
