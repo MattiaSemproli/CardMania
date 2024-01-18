@@ -8,7 +8,7 @@ require_once('connection/conn.php');
 $sql = "DELETE FROM cm_follow WHERE username = ? AND follower = ?";
 
 if ($stmt = $conn->prepare($sql)) {
-    $stmt->bind_param("ss", $_GET['targetUser'], $_GET['loggedUser']);
+    $stmt->bind_param("ss", $_POST['targetUser'], $_POST['loggedUser']);
     if ($stmt->execute()) {
         $temp = array(
             "unfollows" => true,

@@ -10,7 +10,7 @@ $sql = "SELECT username,
                _datetime
         FROM cm_comment
         WHERE id_post = ?
-        ORDER BY _datetime DESC";
+        ORDER BY _datetime ASC";
 
 if ($stmt = $conn->prepare($sql)) {
     $stmt->bind_param("s", $_GET['postID']);

@@ -3,15 +3,15 @@
 /* Require connection to db */
 require_once('connection/conn.php');
 
-/* The logged user starts following a user */
+/* Add a comment to a specific post */
 
-$sql = "INSERT INTO cm_follow(username, follower, _date) VALUES (?, ?, CURRENT_TIMESTAMP())";
+$sql = "INSERT INTO cm_comment(id_post, username, content, _datetime) VALUES (?, ?, ?, CURRENT_TIMESTAMP())";
 
 if ($stmt = $conn->prepare($sql)) {
-    $stmt->bind_param("ss", $_POST['targetUser'], $_POST['loggedUser']);
+    $stmt->bind_param("sss", $_POST['postID'], $_POST['username'], $_POST['content']);
     if ($stmt->execute()) {
         $temp = array(
-            "follows" => true,
+            "ok" => true,
         );
         echo json_encode($temp);
     } else {

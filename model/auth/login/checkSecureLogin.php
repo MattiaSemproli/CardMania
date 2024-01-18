@@ -23,8 +23,7 @@ function executeLogin($username, $password, $connection) {
                     $_SESSION['login_string'] = hash('sha512', $password . $userBrowser);
                     return true;
                 } else {
-                    $now = time();
-                    $sql = "INSERT INTO login_attempt (username, _time) VALUES ('$resUsername', '$now')";
+                    $sql = "INSERT INTO login_attempt (username, _time) VALUES ('$resUsername', CURRENT_TIMESTAMP())";
                     $connection->query($sql);
                     return false;
                 }
@@ -32,6 +31,8 @@ function executeLogin($username, $password, $connection) {
         } else {
             return false;
         }
+    } else {
+        return false;
     }
 }
 

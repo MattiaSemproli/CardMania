@@ -13,7 +13,7 @@ function getUser() {
 }
 
 window.addEventListener('load', function() {
-    user = getUser();
+    let user = getUser();
 
     getUserData(user);
     getUserPosts(user);
@@ -73,6 +73,7 @@ function getUserPosts(user) {
                     alt: "Post"
                 }).addClass("mx-auto d-block rounded w-100 h-100");
                 img.click(function () {
+                    sessionStorage.setItem("postID", postID);
                     $("#input-form").removeClass("d-none");
                     $('#modal').modal('show');
                     document.getElementById("modal-user").textContent = userPost.name + "'s post: " + userPost.description;
@@ -82,6 +83,7 @@ function getUserPosts(user) {
                     }).addClass("img-fluid w-100 h-100");
                     $('#enlarged-post').empty().append(clone);
                     getPostComment(postID);
+                    getPostLike(postID);
                 });
                 post.append(img);
                 $("#post-box").append(post);
@@ -109,7 +111,7 @@ function getPostComment(id) {
         success: function (data) {
             for (let i = 0; i < data.length; i++) {
                 let postComment = data[i];
-                let comment = $("<p>").text(postComment.username + ": " + postComment.content + " " + postComment._datetime);
+                let comment = $("<p>").text(postComment.username + ": " + postComment.content + " " + formatTimestamp(postComment._datetime));
                 $("#modal-display").append(comment);
             }
         },
@@ -129,6 +131,28 @@ function formatTimestamp(timestamp) {
     let date = new Date(timestamp);
     let options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false };
     return date.toLocaleString('en-EN', options);
+}
+
+/**
+ * Function to get the likes of a post
+ * 
+ * @param {id} id 
+ */
+function getPostLike(id) {
+    $.ajax({
+        url: '../../model/getPostLikes.php',
+        type: 'GET',
+        data: {
+            postID: id,
+        },
+        dataType: 'json',
+        success: function (data) {
+
+        },
+        error: function (error) {
+            console.error('Ajax error: ', error);
+        }
+    });
 }
 
 /**
@@ -256,13 +280,11 @@ function actionButtonManagement(user) {
                     $("#user-action").text("Follow");
                     $("#user-action").click(function () {
                         addFollower(user, loggedUser);
-                        window.location.reload();
                     });
                 } else {
                     $("#user-action").text("Unfollow");
                     $("#user-action").click(function () {
                         removeFollower(user, loggedUser);
-                        window.location.reload();
                     });
                 }
             },
@@ -276,7 +298,7 @@ function actionButtonManagement(user) {
 function addFollower(user, loggedUser) {
     $.ajax({
         url: '../../model/addFollow.php',
-        type: 'GET',
+        type: 'POST',
         data: {
             //going to add loggedUser as follower of targetUser
             targetUser: user,
@@ -285,18 +307,20 @@ function addFollower(user, loggedUser) {
         dataType: 'json',
         success: function (data) {
             if (data.follows == true) {
+                window.location.reload();
             }
         },
         error: function (error) {
             console.error('Ajax error: ', error);
         }
     });
+    return false;
 }
 
 function removeFollower(user, loggedUser) {
     $.ajax({
         url: '../../model/removeFollow.php',
-        type: 'GET',
+        type: 'POST',
         data: {
             //going to remove loggedUser as follower of targetUser
             targetUser: user,
@@ -304,13 +328,15 @@ function removeFollower(user, loggedUser) {
         },
         dataType: 'json',
         success: function (data) {
-            if (data.unfollows == true) {
+            if(data.unfollows) {
+                window.location.reload();
             }
         },
         error: function (error) {
             console.error('Ajax error: ', error);
         }
     });
+    return false;
 }
 
 /**
@@ -339,8 +365,26 @@ inputComment.addEventListener('input', function () {
 });
 
 sendComment.addEventListener("click", function () {
-    let comment = $("<p>").text("User: " + inputComment.value + " " + formatTimestamp(Date.now())); 
-    $("#modal-display").append(comment);
+    let comment = $("<p>").text(sessionStorage.getItem('username') + ": " + inputComment.value + " " + formatTimestamp(Date.now())); 
+    $.ajax({
+        url: '../../model/addComment.php',
+        type: 'POST',
+        data: {
+            //going to remove loggedUser as follower of targetUser
+            username: sessionStorage.getItem("username"),
+            content: inputComment.value,
+            postID: sessionStorage.getItem("postID"),
+        },
+        dataType: 'json',
+        success: function (data) {
+            if (data.ok == true) {
+                $("#modal-display").append(comment);
+            }
+        },
+        error: function (error) {
+            console.error('Ajax error: ', error);
+        }
+    });
     inputComment.value = "";
     sendComment.disabled = true;
 });
@@ -354,6 +398,7 @@ myModal.addEventListener('hidden.bs.modal', function() {
 	$("#modal-display").empty();
 	document.getElementById("comment-input").value = "";
 	$("#input-form").addClass("d-none");
+    sessionStorage.removeItem("postID");
 });
 
 /**
