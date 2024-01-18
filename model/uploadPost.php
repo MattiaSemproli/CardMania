@@ -6,7 +6,7 @@ $query = "INSERT INTO cm_post(username, description, _date, photo) VALUES (?, ?,
 
 if ($insert = $conn->prepare($query)) {
     $image = NULL;
-    /*  */
+    
     $insert->bind_param('ssb', $_POST['username'], $_POST['description'], $image);
     if($_FILES['photo']['error'] == 0){
         $insert->send_long_data(2,file_get_contents($_FILES['photo']['tmp_name']));

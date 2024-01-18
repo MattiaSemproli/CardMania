@@ -80,7 +80,7 @@ function getUserPosts(user) {
                     let clone = $("<img>").attr({
                         src: img.get(0).src,
                         alt: "Post"
-                    }).addClass("img-fluid w-100 h-100");
+                    }).addClass("img-fluid w-auto h-100");
                     $('#enlarged-post').empty().append(clone);
                     getPostComment(postID);
                     getPostLike(postID);
@@ -206,7 +206,8 @@ const btnFollowers = document.getElementById("btn-followers");
 const btnFollowing = document.getElementById("btn-following");
 
 btnFollowers.addEventListener("click", function () {
-	$('#modal').modal('show');
+    $('#enlarged-post').addClass("d-none");
+    $('#modal').modal('show');
 	let followerList = $('<ul>').addClass('list-group list-group-flush');
     let user = getUser();
 	document.getElementById("modal-user").textContent = user + " is followed by these users";
@@ -233,6 +234,7 @@ btnFollowers.addEventListener("click", function () {
 });
 
 btnFollowing.addEventListener("click", function () {
+    $('#enlarged-post').addClass("d-none");
     $('#modal').modal('show');
 	let followingList = $('<ul>').addClass('list-group list-group-flush');
     let user = getUser();
@@ -354,6 +356,7 @@ likePost.addEventListener("click", function () {
 	} else {
 		likeIcon.style.color = "black";
 	}
+    
 });
 
 inputComment.addEventListener('input', function () {
@@ -394,6 +397,7 @@ sendComment.addEventListener("click", function () {
  */
 const myModal = document.getElementById('modal');
 myModal.addEventListener('hidden.bs.modal', function() {
+    $('#enlarged-post').removeClass("d-none");
  	$("#enlarged-post").empty();
 	$("#modal-display").empty();
 	document.getElementById("comment-input").value = "";

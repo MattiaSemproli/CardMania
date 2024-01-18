@@ -24,22 +24,21 @@
         <h1 class="col py-2">CardMania</h1>
         <button id="logout" class="btn col text-end text-white p-0 pe-1" type="button">Logout</button>
     </header>
+    
     <!-- Post Uploader -->
-    <form class="text-center" action="#" method="post" id="upload-form" enctype="multipart/form-data">
+    <form id="upload-form" class="text-center" action="../../model/uploadPost.php" method="post" enctype="multipart/form-data">
         <!-- Image Uploader with Carousel -->
         <div class="container col-xl-6 mx-xl-auto mt-4">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Upload Image</h5>
-                    <div>
-                        <img id="placeholder" class="img-fluid col mx-auto" style="height: fit-content;" src="../../view/res/placeholder.jpg" alt="">
+                    <div class="col-8 mx-auto">
+                        <img id="placeholder" class="img-fluid" src="../../view/res/placeholder.jpg" alt="">
                         <div class="row gx-0 mb-3">
                             <label for="photo" class="form-label">Add image</label>
                             <div class="row gx-0">
-                                <input type="file" id="photo" class="form-control col-6 visually-hidden"
-                                    accept="image/*">
-                                <button type="button" id="uploadImageButton"
-                                    class="btn col-4 mx-auto justify-content-center align-items-center">
+                                <input id="photo" class="form-control col-6 visually-hidden" name="photo" type="file" accept="image/*">
+                                <button id="upload-image-button" class="btn col-4 mx-auto justify-content-center align-items-center" type="button">
                                     <i class="bi bi-plus-lg"></i>
                                 </button>
                             </div>
@@ -56,16 +55,15 @@
                     <div class="row gx-0">
                         <div class="col-12">
                             <div class="input-group mb-3">
-                                <input id="title" type="text" class="form-control" placeholder="Title" rows="1">
+                                <input id="title" name="title" class="form-control" type="text" placeholder="Title" rows="1">
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="input-group mb-3">
-                                <textarea id="description" class="form-control" placeholder="Description"
-                                    rows="1"></textarea>
+                                <textarea id="description" class="form-control" name="description" placeholder="Description" rows="1"></textarea>
                             </div>
                         </div>
-                        <div class="d-none" id="username"></div>
+                        <input id="username" name="username" type="text" hidden></div>
                         <button type="submit" class="btn btn-primary">Upload</button>
                     </div>
                 </div>
