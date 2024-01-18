@@ -15,7 +15,15 @@
                 <a href="../user/upload.html"><span class="bi bi-patch-plus fs-1 text-white"></span></a>
             </li>
             <li class="nav-item mx-3">
-                <span class="bi bi-bell fs-1 text-white"></span>
+                <span class="bi bi-bell fs-1 text-white" data-bs-toggle="offcanvas" data-bs-target="#notifications"></span>
+                <div id="notifications" class="offcanvas offcanvas-end">
+                    <div class="offcanvas-header">
+                        <h1 class="offcanvas-title">Notifications</h1>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                    </div>
+                </div>
             </li>
             <li class="nav-item mx-3">
                 <a href="../user/profile.html"><span class="bi bi-person-circle fs-1 text-white"></span></a>
