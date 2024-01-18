@@ -3,7 +3,7 @@
 <head>
     <!-- Meta tags -->
     <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Page title -->
     <title>CardMania | Profile</title>
     <!-- Bootstrap links -->
@@ -24,7 +24,7 @@
     </header>
 
     <!-- Edit profile modal -->
-    <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="edit-modal-label" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="edit-modal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
         <!-- Modal dialog -->
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <!-- Modal content -->
@@ -52,11 +52,11 @@
                                 <label for="photo" class="col-4">New profile picture:</label>
                                 <input id="photo" name="photo" class="form-control visually-hidden" type="file" accept="image/*">
                                 <button id="upload-image-button" class="btn p-0 col-4" type="button">
-                                    <i class="bi bi-plus fs-2"></i>
+                                    <span class="bi bi-plus fs-2"></span>
                                 </button>
                             </div>
                             <div class="mb-3 text-center h">
-                                <img id="placeholder" class="img-fluid" alt="">
+                                <img id="placeholder" src="#" class="img-fluid" alt="">
                             </div>
                     </div>
                     <!-- Modal footer -->
@@ -70,7 +70,7 @@
     </div>
 
     <!-- Post modal -->
-    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
         <!-- Modal dialog -->
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <!-- Modal content -->
@@ -94,7 +94,7 @@
                             </span>
                             <span id="n-likes" class="position-absolute start-0 translate-middle badge rounded-pill bg-danger">0</span>
                         </button>
-                        <input id="comment-input" type="text" class="form-control" placeholder="Comment...">
+                        <input id="comment-input" type="text" class="form-control" placeholder="Comment..." aria-label="Comment...">
                         <button id="send-comment" class="btn btn-outline-secondary" type="button" disabled>Send</button>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
         <div class="card-body">
             <div class="row gx-0">
                 <div class="col-4 ms-auto">
-                    <img id="user-photo" class="mx-auto d-block img-fluid rounded-circle">
+                    <img id="user-photo" class="mx-auto d-block img-fluid rounded-circle" alt="Profile picture">
                 </div>
                 <div class="col-4">
                     <button id="user-action" class="float-end"></button>
@@ -125,12 +125,12 @@
                     <p class="m-0">Post</p>
                 </div>
                 <button id="btn-followers" class="btn p-0 col-4 col-xl-3 text-center">
-                    <p id="n-followers" class="p-0 m-0">0</p>
-                    <p class="m-0">Followers</p>
+                    <span id="n-followers" class="p-0 m-0">0</span>
+                    <span class="m-0">Followers</span>
                 </button>
                 <button id="btn-following" class="btn p-0 col-4 col-xl-3 me-xl-auto text-center">
-                    <p id="n-following" class="p-0 m-0">0</p>
-                    <p class="m-0">Following</p>
+                    <span id="n-following" class="p-0 m-0">0</span>
+                    <span class="m-0">Following</span>
                 </button>
             </div>
         </div>
