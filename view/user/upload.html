@@ -4,7 +4,7 @@
 <head>
     <!-- Meta tags -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Page title -->
     <title>CardMania | Upload</title>
     <!-- Bootstrap links -->
@@ -31,7 +31,7 @@
         <div class="container col-xl-6 mx-xl-auto mt-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Upload Image</h5>
+                    <h2 class="card-title">Upload Image</h2>
                     <div class="col-8 mx-auto">
                         <img id="placeholder" class="img-fluid" src="../../view/res/placeholder.jpg" alt="">
                         <div class="row gx-0 mb-3">
@@ -39,7 +39,7 @@
                             <div class="row gx-0">
                                 <input id="photo" class="form-control col-6 visually-hidden" name="photo" type="file" accept="image/*">
                                 <button id="upload-image-button" class="btn col-4 mx-auto justify-content-center align-items-center" type="button">
-                                    <i class="bi bi-plus-lg"></i>
+                                    <span class="bi bi-plus-lg"></span>
                                 </button>
                             </div>
                         </div>
@@ -55,17 +55,17 @@
                     <div class="row gx-0">
                         <div class="col-12">
                             <div class="input-group mb-3">
-                                <input id="title" name="title" class="form-control" type="text" placeholder="Title" rows="1">
+                                <input id="title" name="title" class="form-control" type="text" placeholder="Title" aria-label="Title">
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="input-group mb-3">
-                                <textarea id="description" class="form-control" name="description" placeholder="Description" rows="1"></textarea>
+                                <textarea id="description" class="form-control" name="description" placeholder="Description" rows="1" title="Description" aria-label="Description"></textarea>
                             </div>
                         </div>
-                        <input id="username" name="username" type="text" hidden></div>
-                        <button type="submit" class="btn btn-primary">Upload</button>
+                        <input id="username" name="username" type="text" hidden aria-label="username">
                     </div>
+                    <button type="submit" class="btn btn-primary">Upload</button>
                 </div>
             </div>
         </div>

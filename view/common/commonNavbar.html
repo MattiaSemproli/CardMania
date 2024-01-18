@@ -1,32 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Page title -->
+    <title>CardMania | Navbar</title>
 </head>
 <body>
     <nav class="common-navbar navbar justify-content-center fixed-bottom">
         <ul class="nav">
             <li class="nav-item mx-3">
-                <a href="../feed/index.html"><span class="bi bi-houses fs-1 text-white"></span></a>
+                <a href="../feed/index.html" aria-label="Home">
+                    <span class="bi bi-houses fs-1 text-white" aria-hidden="true"></span>
+                </a>
             </li>
             <li class="nav-item mx-3">
-                <a href="../feed/search.html"><span class="bi bi-search fs-1 text-white"></span></a>
+                <a href="../feed/search.html" aria-label="Search">
+                    <span class="bi bi-search fs-1 text-white" aria-hidden="true"></span>
+                </a>
             </li>
             <li class="nav-item mx-3">
-                <a href="../user/upload.html"><span class="bi bi-patch-plus fs-1 text-white"></span></a>
+                <a href="../user/upload.html" aria-label="Upload">
+                    <span class="bi bi-patch-plus fs-1 text-white" aria-hidden="true"></span>
+                </a>
             </li>
             <li class="nav-item mx-3">
-                <span class="bi bi-bell fs-1 text-white" data-bs-toggle="offcanvas" data-bs-target="#notifications"></span>
+                <span class="bi bi-bell fs-1 text-white" data-bs-toggle="offcanvas" data-bs-target="#notifications" title="Notifications"></span>
                 <div id="notifications" class="offcanvas offcanvas-end">
                     <div class="offcanvas-header">
                         <h1 class="offcanvas-title">Notifications</h1>
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
                     </div>
                     <div class="offcanvas-body">
+                        <!-- Aggiungere dinamicamente le notifiche -->
                     </div>
                 </div>
             </li>
             <li class="nav-item mx-3">
-                <a href="../user/profile.html"><span class="bi bi-person-circle fs-1 text-white"></span></a>
+                <a href="../user/profile.html" aria-label="Profile">
+                    <span class="bi bi-person-circle fs-1 text-white" aria-hidden="true"></span>
+                </a>
             </li>
         </ul>
     </nav>
