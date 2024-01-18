@@ -322,6 +322,12 @@ function actionButtonManagement(user) {
                     reader.readAsDataURL(fileInput.files[0]);
                 }
             });
+
+            document.getElementById("edit-profile-form").addEventListener("submit", function (e) {
+                e.preventDefault();
+                document.getElementById("username").value = sessionStorage.getItem("username");
+                this.submit();
+            });
         });
     } else {
         $.ajax({
