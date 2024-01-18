@@ -2,15 +2,7 @@ header {
     background: radial-gradient(farthest-side at 130% -30%, #144561, #860914);
 }
 
-body {
-    background-color: #860914;
-}
-
-nav.navbar {
-    background-color: #860914;
-}
-
-ul.nav li {
+body, nav.navbar, ul.nav li {
     background-color: #860914;
 }
 

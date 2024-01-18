@@ -1,60 +1,49 @@
-$(document).ready(function () {
-    const carousel = new bootstrap.Carousel(document.getElementById('postCarousel'));
+document.addEventListener("DOMContentLoaded", function () {
+    // Placeholder e input del file
+    const placeholder = document.getElementById("placeholder");
+    const fileInput = document.getElementById("photo");
+    const uploadImageButton = document.getElementById("uploadImageButton");
 
-    // Azione clic su pulsante di caricamento
-    $('#uploadImageButton').click(function () {
-        // Simula il clic sull'input file
-        $('#photo').click();
+    // Aggiungi un listener al click del bottone per attivare l'input del file
+    uploadImageButton.addEventListener("click", function () {
+        fileInput.click();
     });
 
-    // Azione al cambio dell'input file
-    $('#photo').change(function () {
-        var fileInput = $(this)[0];
+    // Aggiungi un listener per il cambio di valore nell'input file
+    fileInput.addEventListener("change", function () {
+        // Verifica se è stato selezionato un file
         if (fileInput.files && fileInput.files[0]) {
-            var reader = new FileReader();
+            // Rimuovi l'immagine precedente, se presente
+            const previousImage = document.getElementById("uploadedImage");
+            if (previousImage) {
+                previousImage.remove();
+            }
 
+            // Leggi il file selezionato
+            const reader = new FileReader();
             reader.onload = function (e) {
-                var newItem = '<div class="carousel-item">' +
-                    '<img src="' + e.target.result + '" class="img-fluid" alt="Uploaded Image">' +
-                    '</div>';
+                // Nascondi il placeholder
+                placeholder.style.display = "none";
 
-                // Aggiungi il nuovo item al carosello
-                $('.carousel-inner').append(newItem);
+                // Creazione dell'elemento immagine con classi Bootstrap
+                const image = document.createElement("img");
+                image.src = e.target.result;
+                image.alt = "Uploaded Image";
+                image.classList.add("img-fluid", "col", "mx-auto");
+                image.id = "uploadedImage";
 
-                // Aggiorna l'indicatore del carosello
-                var indicators = $('.carousel-indicators');
-                var newIndex = indicators.children().length;
-                indicators.append('<button type="button" data-bs-target="#postCarousel" data-bs-slide-to="' + newIndex + '"></button>');
-
-                // Aggiorna il carosello
-                carousel.to(newIndex);
+                // Aggiungi l'immagine al placeholder
+                placeholder.parentNode.insertBefore(image, placeholder.nextSibling);
             };
-
+            // Leggi il file come URL dati
             reader.readAsDataURL(fileInput.files[0]);
         }
     });
 
-    // TODO fixare il fatto che rimuove tutto e poi non si può più aggiungere
-    // Azione clic su pulsante di rimozione
-    $('#removeImageButton').click(function () {
-        var items = $('.carousel-inner').children('.carousel-item');
-
-        if (items.length >= 1) {
-            // Rimuovi l'ultimo item dal carosello
-            items.last().remove();
-
-            // Rimuovi l'ultimo indicatore
-            $('.carousel-indicators').children().last().remove();
-
-            // Aggiorna il carosello
-            carousel.to(carousel._activeIndex);
-        }
+    // Aggiungi un listener al submit del form
+    document.getElementById("upload-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        document.getElementById("username").textContent = sessionStorage.getItem("username");
+        this.submit();
     });
-
-});
-
-document.getElementById("upload-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    document.getElementById("username").textContent = sessionStorage.getItem("username");
-    this.submit();
 });

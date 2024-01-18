@@ -32,40 +32,15 @@
                 <div class="card-body">
                     <h5 class="card-title">Upload Image</h5>
                     <div>
-                        <div id="postCarousel" class="carousel slide">
-                            <div class="carousel-indicators">
-                                <button type="button" data-bs-target="#postCarousel" data-bs-slide-to="0"
-                                    class="active"></button>
-                            </div>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="../res/square_logo.png" class="img-fluid" alt="Uploaded Image 1">
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#postCarousel"
-                                data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#postCarousel"
-                                data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
+                        <img id="placeholder" class="img-fluid col mx-auto" style="height: fit-content;" src="../../view/res/placeholder.jpg" alt="">
                         <div class="row gx-0 mb-3">
-                            <label for="photo" class="form-label col-6">Add image</label>
-                            <label for="removeImage" class="form-label col-6">Remove image</label>
+                            <label for="photo" class="form-label">Add image</label>
                             <div class="row gx-0">
                                 <input type="file" id="photo" class="form-control col-6 visually-hidden"
                                     accept="image/*">
                                 <button type="button" id="uploadImageButton"
                                     class="btn col-4 mx-auto justify-content-center align-items-center">
                                     <i class="bi bi-plus-lg"></i>
-                                </button>
-                                <button type="button" id="removeImageButton"
-                                    class="btn col-4 mx-auto justify-content-center align-items-center">
-                                    <i class="bi bi-dash-lg"></i>
                                 </button>
                             </div>
                         </div>
