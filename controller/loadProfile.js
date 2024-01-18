@@ -84,6 +84,7 @@ function getUserPosts(user) {
                     $('#enlarged-post').empty().append(clone);
                     getPostComment(postID);
                     getPostLike(postID);
+                    loadUserPostLike(postID);
                 });
                 post.append(img);
                 $("#post-box").append(post);
@@ -147,7 +148,34 @@ function getPostLike(id) {
         },
         dataType: 'json',
         success: function (data) {
+            $("#n-likes").text(data[0].nLikes);
+        },
+        error: function (error) {
+            console.error('Ajax error: ', error);
+        }
+    });
+}
 
+/**
+ * Check if the logged user liked the post or not and change the color of the icon
+ * 
+ * @param {id} id 
+ */
+function loadUserPostLike(id) {
+    $.ajax({
+        url: '../../model/isPostLiked.php',
+        type: 'GET',
+        data: {
+            postID: id,
+            username: sessionStorage.getItem("username"),
+        },
+        dataType: 'json',
+        success: function (data) {
+            if(data.liked == true) {
+                $("#like-icon").css("color", "red");
+            } else {
+                $("#like-icon").css("color", "black");
+            }
         },
         error: function (error) {
             console.error('Ajax error: ', error);
@@ -205,6 +233,9 @@ function getNumberOfFollowing(user) {
 const btnFollowers = document.getElementById("btn-followers");
 const btnFollowing = document.getElementById("btn-following");
 
+/**
+ *  Function to show followers 
+ */
 btnFollowers.addEventListener("click", function () {
     $('#enlarged-post').addClass("d-none");
     $('#modal').modal('show');
@@ -233,6 +264,9 @@ btnFollowers.addEventListener("click", function () {
 	$('#modal-display').append(followerList);
 });
 
+/**
+ *  Function to show following
+ */
 btnFollowing.addEventListener("click", function () {
     $('#enlarged-post').addClass("d-none");
     $('#modal').modal('show');
@@ -261,6 +295,11 @@ btnFollowing.addEventListener("click", function () {
 	$('#modal-display').append(followingList);
 });
 
+/**
+ * Function to manage the action button (follow/unfollow/edit profile) and add the event listener
+ * 
+ * @param {user} user 
+ */
 function actionButtonManagement(user) {
     let loggedUser = sessionStorage.getItem("username");
     if (user == loggedUser) {
@@ -297,6 +336,12 @@ function actionButtonManagement(user) {
     }
 }
 
+/**
+ * Function to add a follower (loggedUser) to a user (targetUser)
+ * 
+ * @param {user} user 
+ * @param {loggedUser} loggedUser
+ */
 function addFollower(user, loggedUser) {
     $.ajax({
         url: '../../model/addFollow.php',
@@ -316,9 +361,14 @@ function addFollower(user, loggedUser) {
             console.error('Ajax error: ', error);
         }
     });
-    return false;
 }
 
+/**
+ * Function to remove a follower (loggedUser) from a user (targetUser)
+ * 
+ * @param {user} user 
+ * @param {loggedUser} loggedUser
+ */
 function removeFollower(user, loggedUser) {
     $.ajax({
         url: '../../model/removeFollow.php',
@@ -338,7 +388,6 @@ function removeFollower(user, loggedUser) {
             console.error('Ajax error: ', error);
         }
     });
-    return false;
 }
 
 /**
@@ -352,13 +401,66 @@ const sendComment = document.getElementById("send-comment");
 likePost.addEventListener("click", function () {
 	let likeIcon = document.getElementById("like-icon");
 	if (likeIcon.style.color != "red") {
+        addLike();
 		likeIcon.style.color = "red";
 	} else {
+        removeLike();
 		likeIcon.style.color = "black";
 	}
-    
 });
 
+/**
+ * Function to add a like to a post
+ */
+function addLike() {
+    $.ajax({
+        url: '../../model/addLike.php',
+        type: 'POST',
+        data: {
+            //logged username add a like to the post
+            username: sessionStorage.getItem("username"),
+            postID: sessionStorage.getItem("postID"),
+        },
+        dataType: 'json',
+        success: function (data) {
+            if (data.ok == true) {
+                $("#n-likes").text(parseInt($("#n-likes").text()) + 1);
+            }
+        },
+        error: function (error) {
+            console.error('Ajax error: ', error);
+        }
+    });
+}
+
+/**
+ * Function to remove a like from a post
+ */
+function removeLike() {
+    $.ajax({
+        url: '../../model/removeLike.php',
+        type: 'POST',
+        data: {
+            //logged username remove a like to the post
+            username: sessionStorage.getItem("username"),
+            postID: sessionStorage.getItem("postID"),
+        },
+        dataType: 'json',
+        success: function (data) {
+            if (data.ok == true) {
+                $("#n-likes").text(parseInt($("#n-likes").text()) - 1);
+            }
+        },
+        error: function (error) {
+            console.error('Ajax error: ', error);
+        }
+    });
+}
+
+/**
+ * Check if the input is empty to disable the send button
+ 
+ */
 inputComment.addEventListener('input', function () {
     if (inputComment.value == "") {
         sendComment.disabled = true;
@@ -367,6 +469,9 @@ inputComment.addEventListener('input', function () {
     }
 });
 
+/**
+ * Function to send a comment, it creates the entry in the database too
+ */
 sendComment.addEventListener("click", function () {
     let comment = $("<p>").text(sessionStorage.getItem('username') + ": " + inputComment.value + " " + formatTimestamp(Date.now())); 
     $.ajax({
@@ -410,10 +515,16 @@ myModal.addEventListener('hidden.bs.modal', function() {
  */
 const mainPhoto = document.getElementById("user-photo");
 
+/**
+ * Add pfpOver
+ */
 mainPhoto.onclick = function() {
 	mainPhoto.classList.add("pfpOver");
 };
 
+/**
+ * Remove pfpOver
+ */
 mainPhoto.onmouseout = function() {
 	mainPhoto.classList.remove("pfpOver");
 };
