@@ -76,7 +76,7 @@ function getUserPosts(user) {
                     sessionStorage.setItem("postID", postID);
                     $("#input-form").removeClass("d-none");
                     $('#modal').modal('show');
-                    document.getElementById("modal-user").textContent = userPost.name + "'s post: " + userPost.description;
+                    document.getElementById("modal-user").textContent = userPost.name;
                     let clone = $("<img>").attr({
                         src: img.get(0).src,
                         alt: "Post"

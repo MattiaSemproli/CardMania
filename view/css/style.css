@@ -15,6 +15,30 @@ body, nav.navbar, ul.nav li {
     transform: scale(1.6);
 }
 
+.last-element, .post-box-container {
+    margin-bottom: 5rem;
+}
+
+.post-content {
+    height: 95%;
+}
+
+#enlarged-post {
+    height: 50%;
+}
+
+#login, #registration {
+    background-color: #860914;
+}
+
+.auth-background {
+    background: radial-gradient(farthest-side at 130% -30%, #144561, #860914)
+}
+
+#edit-profile-form {
+    overflow-y: auto;
+}
+
 @media screen and (min-width: 768px) {
 
     body {
