@@ -16,17 +16,17 @@ function updateValue($conn, $sql, $param, $isPicture) {
         }
         $stmt->execute();
     } else {
-        echo json_encode(array("error" => $stmt->error));
+        header("Location: ../view/user/profile.html");
     }
 }
 
-if (isset($_POST['nickname'])) {
+if (isset($_POST['nickname']) && $_POST['nickname'] != "") {
     $sqlName = "UPDATE cm_user 
                 SET name = ? 
                 WHERE username = ?";
     updateValue($conn, $sqlName, $_POST['nickname'], false);
 } 
-if (isset($_POST['bio'])) {
+if (isset($_POST['bio']) && $_POST['bio'] != "") {
     $sqlBio = "UPDATE cm_user 
                SET bio = ?
                WHERE username = ?";
@@ -39,7 +39,8 @@ if (isset($_FILES['photo']) && !empty($_FILES['photo']['tmp_name'] && $_FILES['p
     updateValue($conn, $sqlPicture, NULL, true);
 }
 
-header("Location: ../view/profile.php");
+header("Location: ../view/user/profile.html");
+
 
 $conn->close();
 
