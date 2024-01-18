@@ -32,32 +32,31 @@
                 <!-- Modal header -->
                 <form id="edit-profile-form" action="../../model/editProfile.php" method="post" enctype="multipart/form-data">    
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5">Editing profile..</h1>       
+                        <h2 class="modal-title fs-5">Editing profile..</h2>       
                         <div class="spinner-border ms-auto" role="status">
                             <span class="visually-hidden">Loading...</span>
                         </div>
                     </div>
                     <!-- Modal form -->
                     <div class="modal-body">
-                        
-                            <div class="mb-3">
-                                <label for="nickname" class="col-form-label">New nickname:</label>
-                                <input id="nickname" name="nickname" class="form-control" type="text">
-                            </div>
-                            <div class="mb-3">
-                                <label for="bio" class="col-form-label">New biography:</label>
-                                <input id="bio" name="bio" class="form-control" type="text">
-                            </div>
-                            <div class="row gx-0 mb-3">
-                                <label for="photo" class="col-4">New profile picture:</label>
-                                <input id="photo" name="photo" class="form-control visually-hidden" type="file" accept="image/*">
-                                <button id="upload-image-button" class="btn p-0 col-4" type="button">
-                                    <span class="bi bi-plus fs-2"></span>
-                                </button>
-                            </div>
-                            <div class="mb-3 text-center h">
-                                <img id="placeholder" src="#" class="img-fluid" alt="">
-                            </div>
+                        <div class="mb-3">
+                            <label for="nickname" class="col-form-label">New nickname:</label>
+                            <input id="nickname" name="nickname" class="form-control" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label for="bio" class="col-form-label">New biography:</label>
+                            <input id="bio" name="bio" class="form-control" type="text">
+                        </div>
+                        <div class="row gx-0 mb-3">
+                            <label for="photo" class="col-4">New profile picture:</label>
+                            <input id="photo" name="photo" class="form-control visually-hidden" type="file" accept="image/*">
+                            <button id="upload-image-button" class="btn p-0 col-4" type="button">
+                                <span class="bi bi-plus fs-2"></span>
+                            </button>
+                        </div>
+                        <div class="mb-3 text-center h">
+                            <img id="placeholder" src="#" class="img-fluid" alt="">
+                        </div>
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
@@ -77,7 +76,7 @@
             <div class="modal-content" style="height: 95%;">
                 <!-- Modal header -->
                 <div class="modal-header">
-                    <h1 id="modal-user" class="modal-title fs-5"></h1>
+                    <h2 id="modal-user" class="modal-title fs-5">Placeholder</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <!-- Modal post -->
@@ -107,7 +106,7 @@
         <div class="card-body">
             <div class="row gx-0">
                 <div class="col-4 ms-auto">
-                    <img id="user-photo" class="mx-auto d-block img-fluid rounded-circle" alt="Profile picture">
+                    <img id="user-photo" class="mx-auto d-block img-fluid rounded-circle" src="#" alt="Profile picture">
                 </div>
                 <div class="col-4">
                     <button id="user-action" class="float-end"></button>
@@ -125,11 +124,11 @@
                     <p class="m-0">Post</p>
                 </div>
                 <button id="btn-followers" class="btn p-0 col-4 col-xl-3 text-center">
-                    <span id="n-followers" class="p-0 m-0">0</span>
+                    <span id="n-followers" class="p-0 m-0">0</span><br>
                     <span class="m-0">Followers</span>
                 </button>
                 <button id="btn-following" class="btn p-0 col-4 col-xl-3 me-xl-auto text-center">
-                    <span id="n-following" class="p-0 m-0">0</span>
+                    <span id="n-following" class="p-0 m-0">0</span><br>
                     <span class="m-0">Following</span>
                 </button>
             </div>
