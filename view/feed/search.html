@@ -22,7 +22,46 @@
         <h1 class="col py-2">CardMania</h1>
         <button id="logout" class="btn col text-end text-white p-0 pe-1" type="button">Logout</button>
     </header>
+
+    <!-- Container -->
+    <div class="container">
     
+        <!-- Search form -->
+        <form class="dropdown col-6 mx-auto d-flex justify-content-center align-items-center mt-1" id="search-form">
+            <input type="text" id="search-input" class="form-control col-4 dropdown-toggle" data-bs-toggle="dropdown" placeholder="Search users">
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Link 1</a></li>
+                <!-- Caricare dinamicamente gli utenti con il rispettivo pulsante follow se si vuole -->
+            </ul>
+            <button type="submit" id="search-button" class="btn btn-primary col"><i class="bi bi-search"></i></button>
+        </form>
+    
+        <!-- Posts card -->
+        <div class="row mx-auto mt-1 d-flex justify-content-center align-items-center" id="posts-card">
+            <div class="card col-xl-6 mx-auto">
+                <div class="card-body">
+                    <h5 class="card-title" id="posts-title">Posts by users</h5>
+                    <!-- Post box -->
+                    <div class="card bg-light mx-xl-auto col-xl" style="margin-bottom: 5rem;">
+                        <div id="post-box" class="row gx-0 row-cols-3">
+                            <!-- Caricare dinamicamente i post -->
+                            <img src="../res/placeholder.jpg" alt="">
+                            <img src="../res/placeholder.jpg" alt="">
+                            <img src="../res/placeholder.jpg" alt="">
+                            <img src="../res/placeholder.jpg" alt="">
+                            <img src="../res/placeholder.jpg" alt="">
+                            <img src="../res/placeholder.jpg" alt="">
+                            <img src="../res/placeholder.jpg" alt="">
+                            <img src="../res/placeholder.jpg" alt="">
+                            <img src="../res/placeholder.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+
     <!-- Navbar -->
     <div class="nav-to-load"></div>
 
