@@ -13,10 +13,10 @@ if ($insert = $conn->prepare($query)) {
     }
     if ($insert->execute()) {
         $response = array("success" => true);
-        echo json_encode($response);
+        header("Location: ../view/feed/index.html");
     } else {
         $response = array("error" => $insert->error);
-        echo json_encode($response);
+        header("Location: ../view/user/upload.html");
     }
 }
     
