@@ -1,8 +1,0 @@
-per i titoli delle pagine usare CM | nome pagina, esempio CM | Login, CM | Home etc... (CM per CardMania)
-
-Footer: alla fine il footer non serve quindi cambio footer.html in header.html e ci metto il nome del sito
-
-Colore: 3 colori primari per il sito: #FCBA04 (giallo), #A50104 (rosso), #590004 (rosso scuro)
-        #FCBA04
-        #A50104
-        #590004
