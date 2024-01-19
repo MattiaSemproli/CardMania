@@ -253,7 +253,8 @@ btnFollowers.addEventListener("click", function () {
             for(let i = 0; i < data.length; i++) {
                 let item = $('<li>').addClass('list-group-item');
                 let linkItem = $('<a>').attr('href', '../../view/user/profile.html?username=' + data[i].follower)
-                                       .text(data[i].follower);
+                                       .text(data[i].follower)
+                                       .addClass('text-black');
                 followerList.append(item.append(linkItem));
             }
         },
@@ -284,7 +285,8 @@ btnFollowing.addEventListener("click", function () {
             for(let i = 0; i < data.length; i++) {
                 let item = $('<li>').addClass('list-group-item');
                 let linkItem = $('<a>').attr('href', '../../view/user/profile.html?username=' + data[i].username)
-                                       .text(data[i].username);
+                                       .text(data[i].username)
+                                       .addClass('text-black');
                 followingList.append(item.append(linkItem));
             }
         },
@@ -303,7 +305,7 @@ btnFollowing.addEventListener("click", function () {
 function actionButtonManagement(user) {
     let loggedUser = sessionStorage.getItem("username");
     if (user == loggedUser) {
-        $("#user-action").text("Edit profile").click(function () {
+        $("#user-action").text("Edit profile").addClass("btn-secondary").click(function () {
             $('#edit-modal').modal('show');
 
             const fileInput = document.getElementById("photo");
@@ -341,12 +343,12 @@ function actionButtonManagement(user) {
             dataType: 'json',
             success: function (data) {
                 if (data.follows == false) {
-                    $("#user-action").text("Follow");
+                    $("#user-action").text("Follow").addClass("btn-success");
                     $("#user-action").click(function () {
                         addFollower(user, loggedUser);
                     });
                 } else {
-                    $("#user-action").text("Unfollow");
+                    $("#user-action").text("Unfollow").addClass("btn-secondary");
                     $("#user-action").click(function () {
                         removeFollower(user, loggedUser);
                     });

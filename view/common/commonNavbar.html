@@ -11,34 +11,33 @@
     <nav class="common-navbar navbar justify-content-center fixed-bottom">
         <ul class="nav">
             <li class="nav-item mx-3">
-                <a href="../feed/index.html" aria-label="Home">
+                <a href="../feed/index.html" title="Home" aria-label="Home">
                     <span class="bi bi-houses fs-1 text-white" aria-hidden="true"></span>
                 </a>
             </li>
             <li class="nav-item mx-3">
-                <a href="../feed/search.html" aria-label="Search">
+                <a href="../feed/search.html" title="Search" aria-label="Search">
                     <span class="bi bi-search fs-1 text-white" aria-hidden="true"></span>
                 </a>
             </li>
             <li class="nav-item mx-3">
-                <a href="../user/upload.html" aria-label="Upload">
+                <a href="../user/upload.html" title="Upload" aria-label="Upload">
                     <span class="bi bi-patch-plus fs-1 text-white" aria-hidden="true"></span>
                 </a>
             </li>
             <li class="nav-item mx-3">
-                <span class="bi bi-bell fs-1 text-white" data-bs-toggle="offcanvas" data-bs-target="#notifications" title="Notifications"></span>
+                <span id="bell" class="bi bi-bell fs-1 text-white" data-bs-toggle="offcanvas" data-bs-target="#notifications" title="Notifications"></span>
                 <div id="notifications" class="offcanvas offcanvas-end">
                     <div class="offcanvas-header">
-                        <h1 class="offcanvas-title">Notifications</h1>
+                        <h2 class="offcanvas-title">Notifications</h2>
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
                     </div>
-                    <div class="offcanvas-body">
-                        <!-- Aggiungere dinamicamente le notifiche -->
+                    <div id="notification-box" class="offcanvas-body">
                     </div>
                 </div>
             </li>
             <li class="nav-item mx-3">
-                <a href="../user/profile.html" aria-label="Profile">
+                <a href="../user/profile.html" title="Profile" aria-label="Profile">
                     <span class="bi bi-person-circle fs-1 text-white" aria-hidden="true"></span>
                 </a>
             </li>

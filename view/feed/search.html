@@ -23,37 +23,59 @@
         <button id="logout" class="btn col text-end text-white p-0 pe-1" type="button">Logout</button>
     </header>
 
+    <!-- Post modal -->
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
+        <!-- Modal dialog -->
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <!-- Modal content -->
+            <div class="modal-content post-content">
+                <!-- Modal header -->
+                <div class="modal-header">
+                    <h2 id="modal-user" class="modal-title fs-5">Placeholder</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Modal post -->
+                <div id="enlarged-post" class="text-center"></div>
+                <!-- Modal comment -->
+                <div class="modal-body">
+                    <div id="modal-display"></div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <div id="input-form" class="input-group d-none">
+                        <button id="like-action" class="btn" type="button">
+                            <span id="like-icon" class="bi bi-heart-fill fs-5">
+                            </span>
+                            <span id="n-likes" class="position-absolute start-0 translate-middle badge rounded-pill bg-danger">0</span>
+                        </button>
+                        <input id="comment-input" type="text" class="form-control" placeholder="Comment..." aria-label="Comment...">
+                        <button id="send-comment" class="btn btn-outline-secondary" type="button" disabled>Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Container -->
     <div class="container">
     
         <!-- Search form -->
-        <form class="dropdown col-6 mx-auto d-flex justify-content-center align-items-center mt-1" id="search-form">
-            <input type="text" id="search-input" class="form-control col-4 dropdown-toggle" data-bs-toggle="dropdown" placeholder="Search users">
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Link 1</a></li>
-                <!-- Caricare dinamicamente gli utenti con il rispettivo pulsante follow se si vuole -->
-            </ul>
-            <button type="submit" id="search-button" class="btn btn-primary col"><span class="bi bi-search"></span></button>
-        </form>
+        <div id="search-form" class="col-6 mx-auto d-flex justify-content-center align-items-center mt-1">
+            <input id="search-input" type="text" class="form-control col-4" list="usernames" autocomplete="off" placeholder="Search users">
+            <datalist id="usernames"></datalist>
+            <button id="search-button" type="button" class="btn btn-primary col">
+                <span class="bi bi-search"></span>
+            </button>
+        </div>
     
         <!-- Posts card -->
         <div class="row mx-auto mt-1 d-flex justify-content-center align-items-center" id="posts-card">
             <div class="card col-xl-6 mx-auto">
                 <div class="card-body">
-                    <h2 class="card-title" id="posts-title">Posts by users</h2>
+                    <h2 class="card-title" id="posts-title">Look at these users' posts!!</h2>
                     <!-- Post box -->
                     <div class="card bg-light mx-xl-auto col-xl post-box-container">
                         <div id="post-box" class="row gx-0 row-cols-3">
-                            <!-- Caricare dinamicamente i post -->
-                            <img src="../res/placeholder.jpg" alt="">
-                            <img src="../res/placeholder.jpg" alt="">
-                            <img src="../res/placeholder.jpg" alt="">
-                            <img src="../res/placeholder.jpg" alt="">
-                            <img src="../res/placeholder.jpg" alt="">
-                            <img src="../res/placeholder.jpg" alt="">
-                            <img src="../res/placeholder.jpg" alt="">
-                            <img src="../res/placeholder.jpg" alt="">
-                            <img src="../res/placeholder.jpg" alt="">
                         </div>
                     </div>
                 </div>
@@ -62,8 +84,45 @@
     
     </div>
 
-    <!-- Navbar -->
+    <!-- Navbar 
     <div class="nav-to-load"></div>
+    -->
+
+    <nav class="common-navbar navbar justify-content-center fixed-bottom">
+        <ul class="nav">
+            <li class="nav-item mx-3">
+                <a href="../feed/index.html" title="Home" aria-label="Home">
+                    <span class="bi bi-houses fs-1 text-white" aria-hidden="true"></span>
+                </a>
+            </li>
+            <li class="nav-item mx-3">
+                <a href="../feed/search.html" title="Search" aria-label="Search">
+                    <span class="bi bi-search fs-1 text-white" aria-hidden="true"></span>
+                </a>
+            </li>
+            <li class="nav-item mx-3">
+                <a href="../user/upload.html" title="Upload" aria-label="Upload">
+                    <span class="bi bi-patch-plus fs-1 text-white" aria-hidden="true"></span>
+                </a>
+            </li>
+            <li class="nav-item mx-3">
+                <span id="bell" class="bi bi-bell fs-1 text-white" data-bs-toggle="offcanvas" data-bs-target="#notifications" title="Notifications"></span>
+                <div id="notifications" class="offcanvas offcanvas-end">
+                    <div class="offcanvas-header">
+                        <h2 class="offcanvas-title">Notifications</h2>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+                    </div>
+                    <div id="notification-box" class="offcanvas-body">
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item mx-3">
+                <a href="../user/profile.html" title="Profile" aria-label="Profile">
+                    <span class="bi bi-person-circle fs-1 text-white" aria-hidden="true"></span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
     <!-- Bootstrap funcs -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -72,5 +131,7 @@
     <!-- Controllers -->
     <script src="../../controller/check/isLogged.js"></script>
     <script src="../../controller/auth/logout.js"></script>
+    <script src="../../controller/explore.js"></script>
+    <script src="../../controller/loadNotifications.js"></script>
 </body>
 </html>

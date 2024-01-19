@@ -4,10 +4,10 @@ window.addEventListener("load", function() {
             window.location.href = "../../view/auth/login.html";
         } else {
             sessionStorage.setItem("username", getCookie("username"));
-            loadNavbar();
+            //loadNavbar();
         }
     } else {
-        loadNavbar();
+        //loadNavbar();
     }
 });
 
@@ -22,6 +22,6 @@ function getCookie(name) {
     return null;
 }
 
-function loadNavbar() {
-    $(".nav-to-load").load("../../view/common/commonNavbar.html .common-navbar");
-}
+// function loadNavbar() {
+//     $(".nav-to-load").load("../../view/common/commonNavbar.html .common-navbar");
+// }

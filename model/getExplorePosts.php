@@ -4,10 +4,11 @@
 require_once('connection/conn.php');
 
 /* Get every post from every user that is not followed by the targetUser */
-$targetUser = $_POST['username'];
 
 $sql = "SELECT p.id_post AS n,
+               u.username,
                u.name,
+               u.profile_picture AS pfp,
                p.description,
                p._date,
                p.photo
@@ -16,16 +17,19 @@ $sql = "SELECT p.id_post AS n,
         ON p.username = u.username
         WHERE p.username NOT IN (SELECT f.username
                                  FROM cm_follow AS f
-                                 WHERE f.follower = '$targetUser')
+                                 WHERE f.follower = ?)
+        AND p.username != ?
         ORDER BY n DESC";
 
 if ($stmt = $conn->prepare($sql)) {
+    $stmt->bind_param("ss", $_GET['targetUser'], $_GET['targetUser']);
     if ($stmt->execute()) {
         $result = $stmt->get_result();
         if ($result->num_rows >= 1) {
             $temp = $result->fetch_all(MYSQLI_ASSOC);
             for ($i = 0; $i < count($temp); $i++) {
                 $temp[$i]['photo'] = base64_encode($temp[$i]['photo']);
+                $temp[$i]['pfp'] = base64_encode($temp[$i]['pfp']);
             }
             echo json_encode($temp);
         } else {

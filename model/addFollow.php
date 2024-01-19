@@ -21,6 +21,15 @@ if ($stmt = $conn->prepare($sql)) {
     echo json_encode(array("error" => $stmt->error));
 }
 
+$notification = "INSERT INTO cm_notification(sender, recipient, id_post, _datetime, type) 
+                    VALUES (?, ?, NULL, CURRENT_TIMESTAMP(), 'Follow')";
+if ($insertNotification = $conn->prepare($notification)) {
+    $insertNotification->bind_param("ss", $_POST['loggedUser'], $_POST['targetUser']);
+    $insertNotification->execute();
+} else {
+    echo json_encode(array("error" => $insertNotification->error));
+}
+
 $conn->close();
 
 ?>
