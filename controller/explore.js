@@ -53,7 +53,7 @@ function createSinglePost(userPost) {
         sessionStorage.setItem("postID", postID);
         $("#input-form").removeClass("d-none");
         $('#modal').modal('show');
-        document.getElementById("modal-user").textContent = userPost.name;
+        document.getElementById("modal-user").innerHTML = "<a class='text-black' href='../../view/user/profile.html?username=" + userPost.username + "'>" + userPost.name + "</a>";
         let clone = $("<img>").attr({
             src: img.get(0).src,
             alt: "Post"
